@@ -1,0 +1,9 @@
+In this version of hangman, you will be able to select a word from 3 difficulties.
+
+You will be able to guess the word one letter at a time; or, if you're feeling confident, you can guess the whole word entirely.
+
+Every time you enter a letter that doesn't exist within the word or enter an incorrect word, an element of the hangman drawing will be added.
+
+Once the hangman drawing is complete, you will lose the game.
+
+

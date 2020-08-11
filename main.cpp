@@ -1,15 +1,28 @@
 #include <iostream>
 #include "menu.h"
+#include "play.h"
 
 // 0 == quit, 1 == easy, 2 == medium, 3 == hard
 
 int main()
 {
-	int mode = menu();
-
-	// quit application if 0
-	if (mode == 0)
+	while (true)
 	{
-		return 0;
+		int mode = menu();
+
+		// quit application if 0, else run game
+		if (mode == 0)
+		{
+			return 0;
+		}
+		else if (mode == 4)
+		{
+			displayRules();
+		}
+		else
+		{
+			playGame(mode);
+			return 0;
+		}
 	}
 }
