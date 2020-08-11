@@ -38,3 +38,8 @@ century
 celebrity
 submarine
 figurine
+dolphin
+treehouse
+utility
+education
+trivia
