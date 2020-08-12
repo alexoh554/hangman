@@ -34,13 +34,13 @@ std::string getFileName(int x)
 	switch (x)
 	{
 		case 1:
-			nameFile = "easy.txt";
+			nameFile = "static/easy.txt";
 			break;
 		case 2:
-			nameFile = "medium.txt";
+			nameFile = "static/medium.txt";
 			break;
 		case 3:
-			nameFile = "hard.txt";
+			nameFile = "static/hard.txt";
 			break;
 	}
 	return nameFile;

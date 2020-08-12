@@ -45,7 +45,7 @@ int menu()
 
 void displayRules()
 {
-	std::ifstream rules("rules.txt");
+	std::ifstream rules("static/rules.txt");
 
 	if (rules.is_open())
 	{
