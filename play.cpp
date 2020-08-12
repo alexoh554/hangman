@@ -1,17 +1,19 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <random>
 
 std::string getFileName(int x);
 int lineCount(std::string txtName);
+std::string getWord(int y, std::string fileName);
 
 void playGame(int difficulty)
 {
 	std::string fileName = getFileName(difficulty);
 	// Count number of lines in txt and get random number
 	int number_of_lines = lineCount(fileName);
-
-	std::cout << fileName << " " << number_of_lines;
+	std::string correctWord = getWord(number_of_lines, fileName);
+	
 	// Get one line from txt file 
 
 	// Store each letter as a class 
@@ -56,4 +58,20 @@ int lineCount(std::string txtName)
 		count++;
 	}
 	return count;
+}
+
+std::string getWord(int y, std::string fileName)
+{
+	std::random_device rd; 
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> distr(0, y); 
+	int lineNumber = distr(gen);
+
+	std::ifstream myFile(fileName);
+	std::string word;
+	for (int i = 0; i < lineNumber; i++)
+	{
+		std::getline(myFile, word);
+	}
+	return word;
 }
