@@ -2,31 +2,49 @@
 #include <fstream>
 #include <string>
 #include <random>
+#include <vector>
+#include <sstream>
+#include "class.h"
 
 std::string getFileName(int x);
 int lineCount(std::string txtName);
 std::string getWord(int y, std::string fileName);
+void displayHangman(int wrong);
 
 void playGame(int difficulty)
 {
 	std::string fileName = getFileName(difficulty);
 	// Count number of lines in txt and get random number
 	int number_of_lines = lineCount(fileName);
-	std::string correctWord = getWord(number_of_lines, fileName);
 	
 	// Get one line from txt file 
+	std::string correctWord = getWord(number_of_lines, fileName);
 
 	// Store each letter as a class 
+	std::vector<Letter> correctLetter(correctWord.length());
+	for (int i = 0; i < correctWord.length(); i++)
+	{
+		correctLetter[i].setLetter(correctWord[i]);
+	}
 
-	// Output letter or underscore depending on class attribute
+	// Store number of wrong guesses
+	int wrongGuess{ 0 };
 
-	// Output hangman
+	// Play game until user fails
+	while (wrongGuess != 6)
+	{
+		// Output hangman
+		displayHangman(wrongGuess);
 
-	// Let user guess
+		// Output letter or underscore depending on class attribute
 
-	// If matches, change attributes
 
-	// Else, output new hangman
+		// Let user guess
+
+		// If matches, change attributes
+
+		// Else, output new hangman
+	}
 
 }
 
@@ -74,4 +92,16 @@ std::string getWord(int y, std::string fileName)
 		std::getline(myFile, word);
 	}
 	return word;
+}
+
+void displayHangman(int wrong)
+{
+	std::stringstream tmp;
+	tmp << "static/" << wrong << "wrong.txt";
+	std::string hangman = tmp.str();
+
+	std::ifstream f(hangman);
+
+	if (f.is_open())
+		std::cout << f.rdbuf();
 }
