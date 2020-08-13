@@ -10,7 +10,7 @@ std::string getFileName(int x);
 int lineCount(std::string txtName);
 std::string getWord(int y, std::string fileName);
 void displayHangman(int wrong);
-void guessCheck(std::string guess, std::vector<Letter>& answer);
+bool guessCheck(std::string guess, std::vector<Letter>& answer);
 
 void playGame(int difficulty)
 {
@@ -73,7 +73,11 @@ void playGame(int difficulty)
 		}
 		else
 		{
-			guessCheck(userGuess, correctLetter);
+			bool correct = guessCheck(userGuess, correctLetter);
+			if (correct == false)
+			{
+				wrongGuess += 1;
+			}
 		}
 
 		// End game if 6 wrong guesses
@@ -145,7 +149,7 @@ void displayHangman(int wrong)
 	std::cout << "\n\n" << "       ";
 }
 
-void guessCheck(std::string guess, std::vector<Letter>& answer)
+bool guessCheck(std::string guess, std::vector<Letter>& answer)
 {
 	bool correct{ false };
 	int correctAmount{ 0 };
@@ -166,4 +170,5 @@ void guessCheck(std::string guess, std::vector<Letter>& answer)
 	{
 		std::cout << "There were " << correctAmount << " matches of " << guess[0] << " in the word.\n";
 	}
+	return correct;
 }
