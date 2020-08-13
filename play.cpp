@@ -10,6 +10,7 @@ std::string getFileName(int x);
 int lineCount(std::string txtName);
 std::string getWord(int y, std::string fileName);
 void displayHangman(int wrong);
+void guessCheck(std::string guess, std::vector<Letter>& answer);
 
 void playGame(int difficulty)
 {
@@ -19,6 +20,10 @@ void playGame(int difficulty)
 	
 	// Get one line from txt file 
 	std::string correctWord = getWord(number_of_lines, fileName);
+	for (int i = 0; i < correctWord.length(); i++)
+	{
+		correctWord[i] = toupper(correctWord[i]);
+	}
 
 	// Store each letter as a class 
 	std::vector<Letter> correctLetter(correctWord.length());
@@ -31,21 +36,53 @@ void playGame(int difficulty)
 	int wrongGuess{ 0 };
 
 	// Play game until user fails
-	while (wrongGuess != 6)
+	while (true)
 	{
 		// Output hangman
 		displayHangman(wrongGuess);
 
 		// Output letter or underscore depending on class attribute
-
+		for (int i = 0; i < correctLetter.size(); i++)
+		{
+			correctLetter[i].printLetter();
+		}
+		std::cout << "\n\n";
 
 		// Let user guess
+		std::cout << "Make a guess:";
+		std::string userGuess;
+		std::cin >> userGuess;
+		for (int i = 0; i < userGuess.length(); i++)
+		{
+			userGuess[i] = toupper(userGuess[i]);
+		}
 
-		// If matches, change attributes
+		// Check if user guesses letter or string
+		if (userGuess.length() > 1)
+		{
+			if (userGuess == correctWord)
+			{
+				std::cout << "Correct! Game will now end.\n";
+				break;
+			}
+			else
+			{
+				std::cout << "Incorrect.\n";
+				wrongGuess += 1;
+			}
+		}
+		else
+		{
+			guessCheck(userGuess, correctLetter);
+		}
 
-		// Else, output new hangman
+		// End game if 6 wrong guesses
+		if (wrongGuess == 6)
+		{
+			std::cout << "GAME OVER!\n";
+			break;
+		}
 	}
-
 }
 
 std::string getFileName(int x)
@@ -104,4 +141,29 @@ void displayHangman(int wrong)
 
 	if (f.is_open())
 		std::cout << f.rdbuf();
+
+	std::cout << "\n\n" << "       ";
+}
+
+void guessCheck(std::string guess, std::vector<Letter>& answer)
+{
+	bool correct{ false };
+	int correctAmount{ 0 };
+	for (int i = 0; i < answer.size(); i++)
+	{
+		if (answer[i].letter == guess[0])
+		{
+			correct = true;
+			answer[i].guessed = true;
+			correctAmount += 1;
+		}
+	}
+	if (correct == false)
+	{
+		std::cout << "Incorrect. There were 0 matches of " << guess[0] << " in the word.\n";
+	}
+	else
+	{
+		std::cout << "There were " << correctAmount << " matches of " << guess[0] << " in the word.\n";
+	}
 }

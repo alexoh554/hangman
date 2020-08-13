@@ -2,11 +2,11 @@
 #define CLASS_H
 class Letter
 {
-	char letter{};
-	bool guessed{ false };
-
 	public:
+		bool guessed{ false };
+		char letter{};
 		void setLetter(char x);
+		void printLetter();
 };
 
 #endif
