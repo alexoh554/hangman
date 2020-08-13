@@ -15,6 +15,7 @@ bool guessCheck(std::string guess, std::vector<Letter>& answer);
 void playGame(int difficulty)
 {
 	std::string fileName = getFileName(difficulty);
+
 	// Count number of lines in txt and get random number
 	int number_of_lines = lineCount(fileName);
 	
@@ -84,6 +85,7 @@ void playGame(int difficulty)
 		if (wrongGuess == 6)
 		{
 			std::cout << "GAME OVER!\n";
+			displayHangman(6);
 			break;
 		}
 	}
@@ -146,7 +148,7 @@ void displayHangman(int wrong)
 	if (f.is_open())
 		std::cout << f.rdbuf();
 
-	std::cout << "\n\n" << "       ";
+	std::cout << "\n\n" << "          ";
 }
 
 bool guessCheck(std::string guess, std::vector<Letter>& answer)

@@ -46,7 +46,6 @@ int menu()
 void displayRules()
 {
 	std::ifstream rules("static/rules.txt");
-
 	if (rules.is_open())
 	{
 		std::cout << rules.rdbuf();
