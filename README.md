@@ -10,7 +10,7 @@ This project includes a dynamic word bank. Any words added to the txt files in t
 
 ## Getting started
 ### Requirements
-A C++ editor and/or compiler (reccomended: [Visual Studio])(https://visualstudio.microsoft.com/downloads/)
+A C++ editor and/or compiler (reccomended: [Visual Studio](https://visualstudio.microsoft.com/downloads/))
 
 ## License
 * [License](LICENSE.md)
