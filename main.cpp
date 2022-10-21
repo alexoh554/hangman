@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "play.h"
 
+// Game states:
 // 0 == quit, 1 == easy, 2 == medium, 3 == hard
 
 int main()
