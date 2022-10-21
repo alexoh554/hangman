@@ -21,6 +21,7 @@ void playGame(int difficulty)
 	
 	// Get one line from txt file 
 	std::string correctWord = getWord(number_of_lines, fileName);
+	correctWord.pop_back();
 	for (int i = 0; i < correctWord.length(); i++)
 	{
 		correctWord[i] = toupper(correctWord[i]);
