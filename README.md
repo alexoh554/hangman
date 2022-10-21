@@ -4,7 +4,7 @@ C++ classic "hangman" game run in console.
 ## Description
 Hangman is a word guessing game where the user is prompted to guess a letter or word. Each wrong guess adds an element to the hangman drawing. Too many wrong guesses and the game ends. The user wins the game by typing out the correct word. 
 
-There are three difficulties in the game and three corresponding word banks for each difficulty. Words may be added to the word bank by simply adding a new line followed by the word in "*difficulty*".txt".
+There are three difficulties in the game and three corresponding word banks for each difficulty. Words may be added to the word bank by simply adding a new line followed by the word in "*difficulty*.txt".
 
 ### Screenshots
 ![Screenshot](/static/intro.png?raw=true)
